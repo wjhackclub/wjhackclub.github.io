@@ -49,12 +49,17 @@
       line-height: 0;
       margin-top: 0;
       margin-left: 0;
+      position: relative;
+      z-index: 1;
+      isolation: isolate;
     }
     .divider {
       width: 110%;
       height: auto;
       display: block;
       margin-left: -2px;
+      transform: translateZ(0);
+      will-change: transform;
     }
     .title1 {
       color: #4a3470;

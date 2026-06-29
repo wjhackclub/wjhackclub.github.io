@@ -1,0 +1,385 @@
+<head>
+  <style>
+    html {
+      background-image: url("background2.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+    html::-webkit-scrollbar {
+      display: none;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      background: transparent;
+    }
+    .hero-bg {
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      background-image: url("background1.png");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: top center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .hero {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      box-sizing: border-box;
+      padding: 10vh 20px 20px 20px;
+    }
+    .box {
+      width: 100%;
+      line-height: 0;
+      margin-top: 0;
+      margin-left: 0;
+    }
+    .divider {
+      width: 110%;
+      height: auto;
+      display: block;
+      margin-left: -2px;
+    }
+    .title1 {
+      color: #4a3470;
+      text-align: center;
+      font-size: 40px;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 20px;
+      margin-bottom: 0;
+    }
+    .title2 {
+      color: #1a0933;
+      text-align: center;
+      font-size: 60px;
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 80px;
+      margin-bottom: 40px;
+    }
+    .desc1 {
+      max-width: 800px;
+      margin: 0 auto 60px auto;
+      text-align: center;
+      font-family: "Rubik", sans-serif;
+      font-size: 20px;
+      line-height: 1.6;
+      color: #2d1e47;
+      padding: 0 20px;
+    }
+    .grid1 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+      padding: 0 30px;
+    }
+    .grid2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+      padding: 0 30px;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 16px;
+      padding: 30px;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.4s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      background: rgba(255, 255, 255, 0.85);
+    }
+    .card-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 22px;
+      color: #4a3470;
+      margin-top: 0;
+      margin-bottom: 12px;
+      font-weight: bold;
+      transition: color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .card-desc {
+      font-family: "Rubik", sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      color: #4c6082;
+      margin: 0;
+    }
+    .img1 {
+      display: block;
+      margin: 0 auto;
+      width: 300px;
+      max-width: 70%;
+      height: auto;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .img1:hover {
+      transform: scale(1.08);
+    }
+    .imgx {
+      display: block;
+      margin: 5px auto;
+      width: 50px;
+      height: auto;
+    }
+    .img2 {
+      display: block;
+      margin: 0 auto;
+      width: 750px;
+      max-width: 85%;
+      height: auto;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .img2:hover {
+      transform: scale(1.05);
+    }
+    .btn-zone {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+    .btn {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      position: relative;
+      cursor: pointer;
+    }
+    .btn .link {
+      font-family: "Rubik", sans-serif;
+      background-color: transparent;
+      font-size: 28px;
+      letter-spacing: 2px;
+      color: rgb(18, 52, 109);
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      cursor: pointer;
+      border: 0;
+      padding-left: 20px;
+      left: 0;
+      line-height: normal;
+      text-decoration: none;
+      overflow: hidden;
+      display: inline-block;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    .btn .link:before {
+      content: "";
+      background-color: #f38181;
+      width: 3px;
+      height: 100%;
+      position: absolute;
+      z-index: 2;
+      left: 0px;
+      top: 0px;
+      border-radius: 50px;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .btn .link:after {
+      content: "";
+      width: 15px;
+      height: 15px;
+      display: flex;
+      align-items: center;
+      background-color: transparent;
+      position: absolute;
+      border: solid 3px #f38181;
+      border-left: 0;
+      border-bottom: 0;
+      top: calc(50% - 9px);
+      border-radius: 2px;
+      transform: translateX(-42px) rotate(45deg);
+      transition: all 0.4s 0.1s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .btn:before {
+      content: "";
+      background-color: white;
+      width: 0;
+      height: 100%;
+      position: absolute;
+      right: 0;
+      top: 0px;
+      border-radius: 3px;
+      transition: all 0.4s 0.2s ease-in-out;
+    }
+    .btn:hover:before {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      bottom: 0px;
+    }
+    .btn:hover .link {
+      padding-left: 50px;
+    }
+    .btn:hover .link:before {
+      left: 17px;
+      transform: rotate(90deg);
+    }
+    .btn:hover .link:after {
+      transform: translate(-33px) rotate(45deg);
+    }
+    .card.box1 {
+      border: 3px solid #4a3470;
+      border-radius: 0px;
+      background: #ffffff;
+      box-shadow: 6px 6px 0px #4a3470;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .card.box1:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 10px 10px 0px #f38181;
+      background: #ffffff;
+    }
+    .card.box1:hover .card-title {
+      color: #f38181;
+    }
+
+    .social-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 40px;
+      margin-bottom: 150px;
+    }
+    .social-btn {
+      border: 3px solid #1a0933;
+      border-radius: 0px;
+      background: #f38181;
+      box-shadow: 4px 4px 0px #1a0933;
+      padding: 12px 35px;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 18px;
+      font-weight: bold;
+      color: #ffffff;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.4s;
+    }
+    .social-btn:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 8px 8px 0px #1a0933;
+      background: #4a3470;
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: 5vh;
+      }
+      .title1 {
+        font-size: 24px;
+      }
+      .title2 {
+        font-size: 40px;
+      }
+      .btn .link {
+        font-size: 22px;
+      }
+      .grid2 {
+        grid-template-columns: 1fr;
+      }
+      .social-bar {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 80px;
+      }
+      .social-btn {
+        width: 80%;
+        max-width: 300px;
+        text-align: center;
+      }
+    }
+  </style>
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="hero-bg"></div>
+  
+  <div class="hero">
+    <a href="https://hackclub.com" target="_blank">
+      <img class="img1" src="hackclub.png" alt="Hack Club Logo">
+    </a>
+    <img class="imgx" src="x.png" alt="X">
+    <a href="https://montgomeryschoolsmd.org" target="_blank">
+      <img class="img2" src="wj.png" alt="Walter Johnson Logo">
+    </a>
+    <h1 class="title1">Walter Johnson Hack Club</h1>
+    <div class="btn-zone">
+      <div class="btn">
+        <a class="link" href="#about">Begin</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="box">
+    <img class="divider" src="divider.svg" alt="Divider">
+    <div id="end"></div>
+  </div>
+  
+  <h2 class="title2" id="about">About Us</h2>
+  <p class="desc1">Walter Johnson Hack Club is a space where high schoolers learn by doing. We believe the best way to grow isn't through textbooks, but through making apps, games, and projects that matter to you. From total beginners typing their first line of code to skilled engineers launching products, everyone is welcome.</p>
+  
+  <div class="grid1">
+    <div class="card box1">
+      <h3 class="card-title">YSWS</h3>
+      <p class="card-desc">Build real projects and get real rewards. Ship your project and earn free hardware, tools, and tech grants to fuel your next idea</p>
+    </div>
+    <div class="card box1">
+      <h3 class="card-title">Global Events</h3>
+      <p class="card-desc">Get access to massive global teen hackathons, workshops, and exclusive perks</p>
+    </div>
+    <div class="card box1">
+      <h3 class="card-title">Dev Community</h3>
+      <p class="card-desc">Collaborate and network with thousands of teen builders worldwide</p>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="card box1">
+      <h3 class="card-title">Club Logistics</h3>
+      <p class="card-desc">Meetings happen one day a week in tech room 211</p>
+    </div>
+    <div class="card box1">
+      <h3 class="card-title">Upcoming Events</h3>
+      <p class="card-desc">None yet</p>
+    </div>
+  </div>
+
+  <div class="social-bar">
+    <a class="social-btn" href="https://hack.club/join/EQYDRE" target="_blank">Join Club</a>
+    <a class="social-btn" href="Link" target="_blank">Discord</a>
+    <a class="social-btn" href="Link" target="_blank">Instagram</a>
+    <a class="social-btn" href="https://github.com/ryanjetplane1" target="_blank">GitHub</a>
+  </div>
+
+  <script>
+    if (history.scrollRestoration) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
+</body>

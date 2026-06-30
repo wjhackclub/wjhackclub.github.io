@@ -19,6 +19,29 @@
       padding: 0;
       background: transparent;
     }
+    .workshop {
+      display: flex;
+      justify-content: center;
+      margin: -20px auto 60px auto;
+    }
+    .workshop-btn {
+      border: 3px solid #1a0933;
+      background: #4a3470;
+      box-shadow: 6px 6px 0px #f38181;
+      padding: 15px 40px;
+      text-decoration: none;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffffff;
+      transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .workshop-btn:hover {
+      transform: translate(-4px, -4px);
+      box-shadow: 10px 10px 0px #1a0933;
+      background: #f38181;
+    }
+
     .hero-bg {
       width: 100%;
       height: 100vh;
@@ -352,7 +375,11 @@
   
   <h2 class="title2" id="about">About Us</h2>
   <p class="desc1">Walter Johnson Hack Club is a space where high schoolers learn by doing. We believe the best way to grow isn't through textbooks, but through making apps, games, and projects that matter to you. From total beginners typing their first line of code to skilled engineers launching products, everyone is welcome.</p>
-  
+  <div class="workshop">
+    <a class="workshop-btn" href="workshops.html">View workshops -></a>
+  </div>
+
+
   <div class="grid1">
     <div class="card box1">
       <h3 class="card-title">YSWS</h3>

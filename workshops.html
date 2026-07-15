@@ -86,7 +86,35 @@
             background-color: #f8f9fa;
             border-radius: 10px;
             flex-shrink: 0;
+            position: relative;
         }
+        
+        /* Custom Progress Bar Styles */
+        .progress-bar {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60%;
+            height: 8px;
+            background-color: rgba(74, 52, 112, 0.15);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+            transition: opacity 0.3s ease;
+        }
+        .update-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #4a3470;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+        .progress-bar.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
         .content {
             flex-grow: 1;
         }
@@ -135,8 +163,10 @@
     </a>
 
     <div class="card">
-        <model-viewer src="boba.glb" ar camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="15deg" interaction-prompt="none">
-            <div slot="progress-bar"></div>
+        <model-viewer data-src="boba.glb" ar camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="15deg" interaction-prompt="none">
+            <div slot="progress-bar" class="progress-bar">
+                <div class="update-bar"></div>
+            </div>
         </model-viewer>
         <div class="content">
             <h3>Boba Drop</h3>
@@ -144,11 +174,11 @@
         </div>
     </div>
 
-
-
     <div class="card reverse">
-        <model-viewer src="hackcard.glb" ar camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="-15deg" interaction-prompt="none">
-            <div slot="progress-bar"></div>
+        <model-viewer data-src="hackcard.glb" ar camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="-15deg" interaction-prompt="none">
+            <div slot="progress-bar" class="progress-bar">
+                <div class="update-bar"></div>
+            </div>
         </model-viewer>
         <div class="content">
             <h3>Hacker Card</h3>
@@ -157,8 +187,10 @@
     </div>
 
     <div class="card">
-        <model-viewer src="keychain.glb" ar camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="15deg" interaction-prompt="none">
-            <div slot="progress-bar"></div>
+        <model-viewer data-src="keychain.glb" ar camera-controls auto-rotate auto-rotate-delay="0" rotation-per-second="15deg" interaction-prompt="none">
+            <div slot="progress-bar" class="progress-bar">
+                <div class="update-bar"></div>
+            </div>
         </model-viewer>
         <div class="content">
             <h3>Fuse Ring</h3>
@@ -167,6 +199,32 @@
     </div>
 
 </div>
+
+<script>
+    window.addEventListener('load', () => {
+        document.querySelectorAll('model-viewer').forEach(viewer => {
+            const progressBar = viewer.querySelector('.progress-bar');
+            const updateBar = viewer.querySelector('.update-bar');
+
+            // Listen for download progress updates
+            viewer.addEventListener('progress', (event) => {
+                if (updateBar) {
+                    updateBar.style.width = `${event.detail.totalProgress * 100}%`;
+                }
+            });
+
+            // Hide the progress bar gracefully when loaded
+            viewer.addEventListener('load', () => {
+                if (progressBar) {
+                    progressBar.classList.add('hidden');
+                }
+            });
+
+            // Trigger the model load now that listeners are set up
+            viewer.src = viewer.getAttribute('data-src');
+        });
+    });
+</script>
 
 </body>
 </html>

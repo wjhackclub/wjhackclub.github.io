@@ -390,11 +390,14 @@
           background: #4a3470;
         }
         .sponsor-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
           gap: 30px;
         }
         .sponsor-card {
+                  flex: 1 1 280px;
+                  max-width: 350px;
                   border: 3px solid #4a3470;
                   border-radius: 0px;
                   background: #ffffff;
@@ -621,6 +624,7 @@
         <div class="sponsor-section" id="sponsors">
           <h2 class="title2">Our Sponsors</h2>
       <p class="desc1">This club is powered by organizations that believe in teen makers. Check them out below and consider supporting the mission!</p>
+      
       <div class="sponsor-grid">
         <div class="sponsor-card">
           <img class="sponsor-logo" src="hcb-icon-dark.png" alt="Hack Club Logo">
@@ -628,33 +632,35 @@
           <p class="sponsor-desc">The global nonprofit network of high school coding clubs, providing free workshops, grants, and community.</p>
           <a class="sponsor-link" href="https://hackclub.com" target="_blank">Learn More -></a>
         </div>
+        
         <div class="sponsor-card">
           <img class="sponsor-logo" src="wj-logo-sponsor.png" alt="Walter Johnson Logo">
           <h3 class="sponsor-name">Walter Johnson HS</h3>
                     <p class="sponsor-desc">Our school, fostering the creativity since day one.</p>
                     <a class="sponsor-link" href="https://www.montgomeryschoolsmd.org/schools/wjhs/" target="_blank">Learn More -></a>
         </div>
-                <div class="sponsor-card">
+        
+        <div class="sponsor-card">
                   <img class="sponsor-logo" src="yri-fellowship-logo.png" alt="YRI Fellowship Logo">
                   <h3 class="sponsor-name">YRI Fellowship</h3>
                   <p class="sponsor-desc">YRI pairs high schoolers 1-on-1 with PhD mentors to run a real research project and publish a peer-reviewed paper in venues like IEEE and Springer.</p>
                   <a class="sponsor-link" href="https://yriscience.com/?ref=WJHACKCLUB" target="_blank">Learn More -></a>
                 </div>
-                <div class="sponsor-card">
-                <img class="sponsor-logo" src="jlcpcb.png" alt="JLCPCB Logo">
-                <h3 class="sponsor-name">JLCPCB</h3>
-                <p class="sponsor-desc">High-quality PCB prototyping and manufacturing services, empowering makers and engineers globally.</p>
-                <a class="sponsor-link" href="https://jlcpcb.com/" target="_blank">Learn More -></a>
-              </div>
-      
-              <!-- NEW SPONSOR: PCBWay -->
-              <div class="sponsor-card">
-                <img class="sponsor-logo" src="pcbway.png" alt="PCBWay Logo">
-                <h3 class="sponsor-name">PCBWay</h3>
-                <p class="sponsor-desc">Professional PCB fabrication, assembly, and 3D printing services supporting innovative student projects.</p>
-                <a class="sponsor-link" href="https://www.pcbway.com/" target="_blank">Learn More -></a>
-              </div>
-              </div>
+
+        <div class="sponsor-card">
+          <img class="sponsor-logo" src="jlcpcb.png" alt="JLCPCB Logo">
+          <h3 class="sponsor-name">JLCPCB</h3>
+          <p class="sponsor-desc">Fast PCB production and manufacturing services.</p>
+          <a class="sponsor-link" href="https://jlcpcb.com/" target="_blank">Learn More -></a>
+        </div>
+
+        <div class="sponsor-card">
+          <img class="sponsor-logo" src="pcbway.png" alt="PCBWay Logo">
+          <h3 class="sponsor-name">PCBWay</h3>
+          <p class="sponsor-desc">PCB fabrication, assembly, and 3D printing services.</p>
+          <a class="sponsor-link" href="https://www.pcbway.com/" target="_blank">Learn More -></a>
+        </div>
+      </div>
     </div>
 
               <div class="cta-section">
@@ -670,7 +676,6 @@
       history.scrollRestoration = 'manual';
     }
 
-                  // Save scroll position before leaving so back navigation restores it.
                   window.addEventListener('pagehide', function () {
                     sessionStorage.setItem('wjScrollPos', String(window.scrollY));
                   });
